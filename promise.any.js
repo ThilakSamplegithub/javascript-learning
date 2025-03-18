@@ -1,0 +1,25 @@
+// Promise.any gives us 1st settled resolve
+// promise.any will result aggregated error for all failures in promises
+const p1=new Promise((resolve,reject)=>{
+    if(true){
+        setTimeout(()=>reject('p1 failed'),2500)
+    
+    }
+})
+const p2=new Promise((resolve,reject)=>{
+    if(true){
+        setTimeout(()=>reject('p2 failed'),3000)
+        // setTimeout(()=>reject('p2 failure'),1000)Here results when it encounters failure
+        // so promise.all is fail fast otherwise it waits untill longer time
+ 
+    }
+})
+const p3=new Promise((resolve,reject)=>{
+    if(true){
+        setTimeout(()=>reject('p3 failed'),2000)
+     
+    }
+})
+Promise.any([p1,p2,p3])
+.then(result=>console.log(result))
+.catch(err=>console.error(err.errors))

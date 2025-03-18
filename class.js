@@ -30,6 +30,8 @@ class CreateUser{
     }
     about(){return `${this.firstName} is ${this.age} years old`}
     is18(){return  this.age>=18}
+    isPrintWithArrow(){setTimeout(()=>console.log(this.firstName,'=> Arrow'))}
+    isPrint(){setTimeout(function(){console.log(`${this.firstName} is my name`)})}
     sing(){console.log('sing a song a rapapooo')}
 }
 const user4= new CreateUser('Thilak','singh','truimphThilak@gmail.com',29,'My Address')
@@ -39,4 +41,7 @@ console.log(ok)
 let s=user4.is18()
 console.log(s)
 user4.sing()
+user4.isPrint()
+user4.isPrintWithArrow()
+user4.letsCheck()()
 
